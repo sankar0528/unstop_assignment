@@ -1,0 +1,24 @@
+<h2>Seat Reservation</h2>
+
+<p>
+  Enter the number of seats to reserve:
+  <input type="number" [(ngModel)]="numOfSeats" />
+  <button (click)="reserveSeats()">Reserve</button>
+</p>
+
+<div *ngIf="reservedSeats.length > 0">
+  <h3>Reserved Seats</h3>
+  <ul>
+    <li *ngFor="let seat of reservedSeats">{{ seat }}</li>
+  </ul>
+</div>
+
+<div>
+  <h3>Seat Availability</h3>
+  <table>
+    <tr *ngFor="let row of seats">
+      <td *ngFor="let seat of row" [ngClass]="{ reserved: seat }"></td>
+    </tr>
+  </table>
+</div>
+<app-seat-reservation [data]="numOfSeats"></app-seat-reservation>
